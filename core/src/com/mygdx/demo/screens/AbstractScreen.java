@@ -29,8 +29,8 @@ public abstract class AbstractScreen implements Screen {
     @Override
     public void render(float delta) {
         clearScreen();
-        orthographicCamera.update();
-        spriteBatch.setProjectionMatrix(orthographicCamera.combined);
+        //orthographicCamera.update();
+        //spriteBatch.setProjectionMatrix(orthographicCamera.combined);
     }
 
     private void clearScreen() {
@@ -58,4 +58,7 @@ public abstract class AbstractScreen implements Screen {
 
     @Override
     public void hide() {}
+
+    @Override
+    public void resize(int width, int height) {}
 }
