@@ -11,16 +11,16 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.mygdx.demo.screens.MenuScreen;
 
 public class LibGDXGame extends Game {
-	//public SpriteBatch batch;
+	public SpriteBatch batch;
 	Texture img;
-	public final static int WIDTH = 800;
-	public final static int HEIGHT = 600;
+	public final static int WIDTH = 400;
+	public final static int HEIGHT = 208;
 
 	private boolean paused;
 	
 	@Override
 	public void create () {
-		//batch = new SpriteBatch();
+		batch = new SpriteBatch();
 		this.setScreen(new MenuScreen(this));
 	}
 

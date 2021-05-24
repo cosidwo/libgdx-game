@@ -6,24 +6,21 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.demo.LibGDXGame;
 
 public abstract class AbstractScreen implements Screen {
     protected LibGDXGame libGDXGame;
     protected Stage stage;
-    private OrthographicCamera orthographicCamera;
-
+    protected OrthographicCamera orthographicCamera;
+    protected Viewport viewport;
     protected SpriteBatch spriteBatch;
 
     public AbstractScreen(LibGDXGame libGDXGame){
         this.libGDXGame = libGDXGame;
-        createCamera();
-    }
-
-    private void createCamera() {
         orthographicCamera = new OrthographicCamera();
-        orthographicCamera.setToOrtho(false,LibGDXGame.WIDTH,LibGDXGame.HEIGHT);
-        orthographicCamera.update();
+        viewport = new FitViewport(LibGDXGame.WIDTH,LibGDXGame.HEIGHT,orthographicCamera);
     }
 
     @Override
@@ -34,7 +31,7 @@ public abstract class AbstractScreen implements Screen {
     }
 
     private void clearScreen() {
-        Gdx.gl.glClearColor(0,0,0,0);
+        Gdx.gl.glClearColor(0,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
@@ -60,5 +57,7 @@ public abstract class AbstractScreen implements Screen {
     public void hide() {}
 
     @Override
-    public void resize(int width, int height) {}
+    public void resize(int width, int height) {
+        viewport.update(width,height,false);
+    }
 }
