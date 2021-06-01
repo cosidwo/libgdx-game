@@ -15,6 +15,7 @@ public class LibGDXGame extends Game {
 	Texture img;
 	public final static int WIDTH = 400;
 	public final static int HEIGHT = 208;
+	public final static float PPM = 100;
 
 	private boolean paused;
 	

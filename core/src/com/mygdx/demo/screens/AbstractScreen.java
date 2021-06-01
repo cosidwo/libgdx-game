@@ -20,7 +20,7 @@ public abstract class AbstractScreen implements Screen {
     public AbstractScreen(LibGDXGame libGDXGame){
         this.libGDXGame = libGDXGame;
         orthographicCamera = new OrthographicCamera();
-        viewport = new FitViewport(LibGDXGame.WIDTH,LibGDXGame.HEIGHT,orthographicCamera);
+        viewport = new FitViewport(LibGDXGame.WIDTH /LibGDXGame.PPM,LibGDXGame.HEIGHT /LibGDXGame.PPM,orthographicCamera);
     }
 
     @Override
