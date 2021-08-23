@@ -23,7 +23,8 @@ public class TileObject {
         PolygonShape shape = new PolygonShape();
 
         bodyDef.type = BodyDef.BodyType.StaticBody;
-        bodyDef.position.set((float)(rectangle.getX() + rectangle.getWidth() / 2) / LibGDXGame.PPM, (float)(rectangle.getY() + rectangle.getHeight() / 2) / LibGDXGame.PPM);
+        bodyDef.position.set((float)(rectangle.getX() + rectangle.getWidth() / 2) / LibGDXGame.PPM, (float)(rectangle
+                .getY() + rectangle.getHeight() / 2) / LibGDXGame.PPM);
         body = world.createBody(bodyDef);
 
         shape.setAsBox((float)rectangle.getWidth() / 2 / LibGDXGame.PPM, (float)rectangle.getHeight() / 2 / LibGDXGame.PPM);
