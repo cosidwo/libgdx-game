@@ -6,30 +6,42 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import com.mygdx.demo.LibGDXGame;
+import com.mygdx.demo.screens.FirsLevelScreen;
 import com.mygdx.demo.sprites.Brick;
-import com.mygdx.demo.sprites.Surprise;
+import com.mygdx.demo.sprites.Cherry;
+import com.mygdx.demo.sprites.House;
 
 public class WorldCreator {
+
+    public World world;
+    public TiledMap map;
 
     public BodyDef bodyDef;
     public PolygonShape shape;
     public FixtureDef fixtureDef;
     public Body body;
 
-    public WorldCreator(World world, TiledMap map){
+    public WorldCreator(FirsLevelScreen screen){
+        world = screen.getWorld();
+        map = screen.getMap();
+
         bodyDef =  new BodyDef();
         shape = new PolygonShape();
         fixtureDef = new FixtureDef();
 
-        for(int i=2;i<7;i++) {
+        for(int i=10;i<=13;i++) {
             for (MapObject object : map.getLayers().get(i).getObjects().getByType(RectangleMapObject.class)) {
-                if(i==5){
+                if(i==13){
                     Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
-                    new Surprise(world,map,rectangle);
+                    new Cherry(screen,rectangle);
                 }
-                else if(i==4){
+                else if(i==12){
                     Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
-                    new Brick(world,map,rectangle);
+                    new House(screen,rectangle);
+                }
+                else if(i==11){
+                    Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
+                    new Brick(screen,rectangle);
                 }else {
                     Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
 

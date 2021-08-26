@@ -37,12 +37,10 @@ public abstract class AbstractScreen implements Screen {
 
     @Override
     public void resume() {
-        libGDXGame.setPaused(false);
     }
 
     @Override
     public void pause() {
-        libGDXGame.setPaused(true);
     }
 
     @Override

@@ -1,39 +1,26 @@
 package com.mygdx.demo;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g3d.shaders.DefaultShader;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.mygdx.demo.screens.MenuScreen;
-
+import com.mygdx.demo.screens.FirsLevelScreen;
 public class LibGDXGame extends Game {
+
 	public SpriteBatch batch;
 	Texture img;
 	public final static int WIDTH = 400;
 	public final static int HEIGHT = 208;
 	public final static float PPM = 100;
 
-	private boolean paused;
-	
+	public static final short DEFAULT_BIT = 1;
+	public static final short FOX_BIT = 2;
+	public static final short CHERRY_BIT = 4;
+	public static final short CONTACT_BIT = 8;
+	public static final short ENEMY_BIT = 16;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		this.setScreen(new MenuScreen(this));
-	}
-
-	/*
-	GETTERS AND SETTERS BELOW
-	*///
-
-	public boolean isPaused() {
-		return paused;
-	}
-
-	public void setPaused(boolean paused) {
-		this.paused = paused;
+		this.setScreen(new FirsLevelScreen(this));
 	}
 }

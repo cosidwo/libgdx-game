@@ -19,15 +19,15 @@ public class Hud implements Disposable {
     private float timeCount;
     private Integer score;
 
-    Label countLabel;
-    Label scoreLabel;
-    Label timeLabel;
-    Label levelLabel;
-    Label worldLabel;
-    Label playerLabel;
+    public Label countLabel;
+    private Label scoreLabel;
+    private Label timeLabel;
+    private Label levelLabel;
+    private Label worldLabel;
+    private Label playerLabel;
 
-    public Hud(SpriteBatch spriteBatch){
-        timer = 300;
+    public Hud(SpriteBatch spriteBatch, int time, int points){
+        timer = 0;
         timeCount = 0;
         score = 0;
         viewport = new FitViewport(LibGDXGame.WIDTH,LibGDXGame.HEIGHT,new OrthographicCamera());
@@ -37,19 +37,15 @@ public class Hud implements Disposable {
         table.top();
         table.setFillParent(true);
 
-        countLabel = new Label(String.format("%03d", timer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        scoreLabel = new Label(String.format("%06d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        countLabel = new Label(""+time, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        scoreLabel = new Label(""+points, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         timeLabel = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        levelLabel = new Label("1-1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));;
-        worldLabel = new Label("WORLD", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        playerLabel = new Label("PLAYER", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        playerLabel = new Label("POINTS", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
         table.add(playerLabel).expandX().padTop(10);
-        table.add(worldLabel).expandX().padTop(10);
         table.add(timeLabel).expandX().padTop(10);
         table.row();
         table.add(scoreLabel).expandX();
-        table.add(levelLabel).expandX();
         table.add(countLabel).expandX();
 
         stage.addActor(table);
