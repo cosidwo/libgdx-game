@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="141" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="20" nextobjectid="22">
+ <tileset firstgid="1" source="tileset-sliced.tsx"/>
+ <tileset firstgid="576" source="house.tsx"/>
+ <tileset firstgid="606" source="tree.tsx"/>
+ <tileset firstgid="636" source="bush.tsx"/>
+ <tileset firstgid="638" source="cherry-3.tsx"/>
+ <imagelayer id="18" name="background" offsetx="-379.333" offsety="0">
+  <image source="back.png" width="384" height="240"/>
+ </imagelayer>
+ <imagelayer id="2" name="background1">
+  <image source="back.png" width="384" height="240"/>
+ </imagelayer>
+ <imagelayer id="5" name="background2" offsetx="383.5" offsety="0">
+  <image source="back.png" width="384" height="240"/>
+ </imagelayer>
+ <imagelayer id="6" name="background3" offsetx="765.5" offsety="0">
+  <image source="back.png" width="384" height="240"/>
+ </imagelayer>
+ <imagelayer id="7" name="background4" offsetx="1148.58" offsety="0.030303">
+  <image source="back.png" width="384" height="240"/>
+ </imagelayer>
+ <imagelayer id="8" name="background5" offsetx="1532" offsety="0">
+  <image source="back.png" width="384" height="240"/>
+ </imagelayer>
+ <imagelayer id="9" name="background6" offsetx="1915.33" offsety="0">
+  <image source="back.png" width="384" height="240"/>
+ </imagelayer>
+ <imagelayer id="19" name="background7" offsetx="2295.33" offsety="0">
+  <image source="back.png" width="384" height="240"/>
+ </imagelayer>
+ <layer id="1" name="foreground" width="141" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt0UkKwkAQRuEmB3WK8zxPMYeSXNC3cNEgiFZiC93/B2+XkKqKcyIiIiIiIiIiv9fKnGtTh7rUozz791TNS2XPEPrcbUBDGtGYJhHeMpU9Q5hytxnNaUFLWkV4y1T2DGHN3Ta0pR3t6RDhLZvY88bz5TOryv7qi7uXlWWeI/uf6EwXulLx5iZ1Z/TV+Qff7Op/p/xwTxGLB0/iIv0=
+  </data>
+ </layer>
+ <layer id="10" name="graphics" width="141" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztllkOwiAURanbMMatOM/zPG7BGBfg3tyZx+h/KWmB1HuSk/Sn8Hi9QI0RQgghhBAfnpXQFQgh/oWXhSFrEPY0uDua2MI2dnSXiBS6ZKSHfRzgMENmQp8btjWFoMz/cSPWNsYJTnHmYa2x9TO2elzxtV/m9GuBS1zhuiT9i508zmeXrOexPzaMscUd7vGgzIgUjmTkhGe84PWXmSrWsF7QswtF1eRzbld8fYNbYsw9o4/k++4bgDM7Jg==
+  </data>
+ </layer>
+ <objectgroup id="11" name="ground">
+  <object id="1" x="0" y="192" width="384" height="16"/>
+  <object id="2" x="592" y="192" width="352" height="16"/>
+  <object id="3" x="1088" y="192" width="288" height="16"/>
+  <object id="4" x="1600" y="192" width="336" height="16"/>
+  <object id="5" x="2016" y="192" width="224" height="16"/>
+ </objectgroup>
+ <objectgroup id="12" name="bricks">
+  <object id="6" x="144" y="128" width="128" height="16"/>
+  <object id="7" x="320" y="96" width="144" height="16"/>
+  <object id="8" x="736" y="128" width="80" height="16"/>
+  <object id="9" x="848" y="96" width="112" height="16"/>
+  <object id="10" x="1408" y="160" width="112" height="16"/>
+  <object id="11" x="1744" y="144" width="80" height="16"/>
+ </objectgroup>
+ <objectgroup id="15" name="house">
+  <object id="21" x="2192" y="112" width="48" height="80"/>
+ </objectgroup>
+ <objectgroup id="14" name="cherries">
+  <object id="15" x="288" y="64" width="16" height="16"/>
+  <object id="16" x="368" y="144" width="16" height="16"/>
+  <object id="17" x="944" y="144" width="16" height="16"/>
+  <object id="18" x="1280" y="128" width="16" height="16"/>
+  <object id="19" x="1680" y="160" width="16" height="16"/>
+  <object id="20" x="1888" y="160" width="16" height="16"/>
+ </objectgroup>
+</map>
