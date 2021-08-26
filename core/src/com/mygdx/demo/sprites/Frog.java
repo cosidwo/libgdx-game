@@ -42,10 +42,15 @@ public class Frog extends Enemy{
         CircleShape shape = new CircleShape();
         shape.setRadius(7 / LibGDXGame.PPM);
 
+        //defining category bit of frog
         fixtureDef.filter.categoryBits = LibGDXGame.ENEMY_BIT;
+
+        //adding mask bits - defining objects which frog is able to collide with
         fixtureDef.filter.maskBits = LibGDXGame.FOX_BIT | LibGDXGame.DEFAULT_BIT | LibGDXGame.ENEMY_BIT;
 
         fixtureDef.shape = shape;
+
+        //setting user data so frog object can be distinguished in WorldContactListener class during collision detection
         body.createFixture(fixtureDef).setUserData("frog");
     }
 

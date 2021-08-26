@@ -1,12 +1,8 @@
 package com.mygdx.demo.tools;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.*;
-import com.badlogic.gdx.scenes.scene2d.utils.TiledDrawable;
 import com.badlogic.gdx.utils.DelayedRemovalArray;
 import com.mygdx.demo.LibGDXGame;
-import com.mygdx.demo.scenes.Hud;
-import com.mygdx.demo.scenes.HudEndGame;
 import com.mygdx.demo.sprites.Cherry;
 import com.mygdx.demo.sprites.TileObject;
 
@@ -26,26 +22,33 @@ public class WorldContactListener implements ContactListener {
         Fixture fixA = contact.getFixtureA();
         Fixture fixB = contact.getFixtureB();
 
+        //called when player collides with the house -> game pauses and the new hud is displayed
         if(fixA.getUserData()=="house" || fixB.getUserData()=="house"){
             pause = true;
         }
 
+        //called when fox collides with any object
         if(fixA.getUserData()=="fox" || fixB.getUserData()=="fox"){
 
+            //creating a fixture of fox
             Fixture fox = fixA.getUserData() == "fox" ? fixA : fixB;
+            //creating a fixture of object which collided with fox
             Fixture object = fox == fixA ? fixB : fixA;
 
+            //if object which collided with fox is a cherry then...
             if (object.getUserData() != null && Cherry.class.isAssignableFrom(object.getUserData().getClass())) {
+                //...points are added
                 points++;
-                Gdx.app.log("tag","contact2!");
+                //...method onContact() is called
                 ((TileObject) object.getUserData()).onContact();
             }
         }
 
+        //called when fox collides with enemy opossum (game restarts)
         if((fixA.getUserData()=="opossum" && fixB.getUserData()=="fox")|| (fixA.getUserData()=="fox" && fixB.getUserData()=="opossum")){
             libGDXGame.create();
         }
-
+        //called when fox collides with enemy frog (game restarts)
         if((fixA.getUserData()=="frog" && fixB.getUserData()=="fox")|| (fixA.getUserData()=="fox" && fixB.getUserData()=="frog")){
             libGDXGame.create();
         }

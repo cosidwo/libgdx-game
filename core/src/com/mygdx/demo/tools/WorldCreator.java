@@ -32,14 +32,17 @@ public class WorldCreator {
         for(int i=10;i<=13;i++) {
             for (MapObject object : map.getLayers().get(i).getObjects().getByType(RectangleMapObject.class)) {
                 if(i==13){
+                    //creating cherries
                     Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
                     new Cherry(screen,rectangle);
                 }
                 else if(i==12){
+                    //creating house object
                     Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
                     new House(screen,rectangle);
                 }
                 else if(i==11){
+                    //creating bricks
                     Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
                     new Brick(screen,rectangle);
                 }else {

@@ -5,7 +5,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.scenes.scene2d.ui.Cell;
 import com.mygdx.demo.LibGDXGame;
 import com.mygdx.demo.screens.FirsLevelScreen;
 

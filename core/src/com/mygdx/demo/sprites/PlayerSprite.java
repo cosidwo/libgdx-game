@@ -1,6 +1,5 @@
 package com.mygdx.demo.sprites;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -8,7 +7,6 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.demo.LibGDXGame;
 import com.mygdx.demo.screens.FirsLevelScreen;
-import org.w3c.dom.Text;
 
 public class PlayerSprite extends Sprite {
     public enum State {STANDING, RUNNING}
@@ -31,6 +29,7 @@ public class PlayerSprite extends Sprite {
         stateTimer = 0;
         runningRight = true;
 
+        //creating an animation used when fox is running
         Array<TextureRegion> frames = new Array<TextureRegion>();
         for(int i=0;i<4;i++){
             frames.add(new TextureRegion(getTexture(),(i*21)+8,12,20,22));
@@ -38,6 +37,7 @@ public class PlayerSprite extends Sprite {
         foxRun = new Animation(0.1f,frames);
         frames.clear();
 
+        //creating an animation used when fox is standing
         Array<TextureRegion> frames2 = new Array<TextureRegion>();
         for(int i=0;i<4;i++){
             frames2.add(new TextureRegion(getTexture(),(i*21)+8,12,20,22));
@@ -63,14 +63,20 @@ public class PlayerSprite extends Sprite {
         CircleShape shape = new CircleShape();
         shape.setRadius(7 / LibGDXGame.PPM);
 
+        //defining category bit of fox
         fixtureDef.filter.categoryBits = LibGDXGame.FOX_BIT;
+
+        //adding mask bits - defining objects which player is able to collide with
         fixtureDef.filter.maskBits = LibGDXGame.DEFAULT_BIT | LibGDXGame.CHERRY_BIT | LibGDXGame.ENEMY_BIT;
 
         fixtureDef.shape = shape;
+
+        //setting user data so fox object can be distinguished in WorldContactListener class during collision detection
         body.createFixture(fixtureDef).setUserData("fox");
 
     }
 
+    //updating position of a fox
     public void update(float delta){
         setPosition(body.getPosition().x - getWidth()/2, body.getPosition().y - getHeight()/2);
         setRegion(getFrame(delta));
@@ -104,6 +110,7 @@ public class PlayerSprite extends Sprite {
 
     }
 
+    //checking if fox is standing or running
     public State getState(){
         if(body.getLinearVelocity().x!= 0){
             return State.RUNNING;

@@ -1,9 +1,6 @@
 package com.mygdx.demo.sprites;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.demo.screens.FirsLevelScreen;
 
 public class House extends TileObject{
@@ -11,6 +8,7 @@ public class House extends TileObject{
         super(screen, rectangle);
 
         fixture = body.createFixture(fixtureDef);
+        //setting user data so house object can be distinguished in WorldContactListener class during collision detection
         fixture.setUserData("house");
     }
 

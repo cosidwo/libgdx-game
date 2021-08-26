@@ -19,9 +19,14 @@ import com.mygdx.demo.tools.WorldCreator;
 
 public class FirsLevelScreen extends AbstractScreen{
 
+    //variable used to pause game after finishing level
     private boolean paused;
+
+    //variables used to count time in game
     private long start_time;
     private long current_time;
+
+    //variable used to score points during the game
     private int points;
 
     private Hud hud;
@@ -35,10 +40,11 @@ public class FirsLevelScreen extends AbstractScreen{
     private Box2DDebugRenderer debugRenderer;
 
     private WorldCreator worldCreator;
+
+    //objects representing player and his enemies
     private PlayerSprite player;
     private Opossum opossum;
     private Opossum opossum2;
-
     private Frog frog;
     private Frog frog2;
 
@@ -64,6 +70,7 @@ public class FirsLevelScreen extends AbstractScreen{
         worldCreator = new WorldCreator(this);
 
         player = new PlayerSprite(this);
+        //setting positions and bounds of enemies
         opossum = new Opossum(this, 9f, .32f, 6f,9.3f);
         opossum2 = new Opossum(this, 12f, .32f,10.95f,13.65f);
         frog = new Frog(this,16.5f,.32f,16.1f,17.3f);
@@ -73,6 +80,7 @@ public class FirsLevelScreen extends AbstractScreen{
         world.setContactListener(worldContactListener);
     }
 
+    //called every frame
     @Override
     public void render(float delta) {
         update(delta);
@@ -88,11 +96,11 @@ public class FirsLevelScreen extends AbstractScreen{
 
         /////////////////////////////////////
         libGDXGame.batch.begin();           //
-        player.draw(libGDXGame.batch);
-        opossum.draw(libGDXGame.batch);
-        opossum2.draw(libGDXGame.batch);
-        frog.draw(libGDXGame.batch);
-        frog2.draw(libGDXGame.batch);/// drawing fox's texture
+        player.draw(libGDXGame.batch);      //
+        opossum.draw(libGDXGame.batch);     //
+        opossum2.draw(libGDXGame.batch);    /// drawing textures of fox and enemies
+        frog.draw(libGDXGame.batch);        //
+        frog2.draw(libGDXGame.batch);       //
         libGDXGame.batch.end();             //
         /////////////////////////////////////
 
@@ -100,13 +108,12 @@ public class FirsLevelScreen extends AbstractScreen{
         if(worldContactListener.isPaused()){
             paused = true;
             hudEndGame.stage.draw();
-
         }
 
         //setting batch to draw what the camera sees
         libGDXGame.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 
-        //update main hud only if game is not paused
+        //draw main hud only if game is not paused
         if(!paused)
             hud.stage.draw();
     }
@@ -146,6 +153,7 @@ public class FirsLevelScreen extends AbstractScreen{
         //telling renderer to draw only what camera see
         mapRenderer.setView(orthographicCamera);
 
+        //game restarts if player falls off the edge
         if(player.body.getPosition().y < -1){
             libGDXGame.create();
         }

@@ -1,6 +1,5 @@
 package com.mygdx.demo.sprites;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -9,7 +8,6 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.demo.LibGDXGame;
 import com.mygdx.demo.screens.FirsLevelScreen;
-import org.w3c.dom.Text;
 
 public class Opossum extends Enemy{
 
@@ -66,10 +64,14 @@ public class Opossum extends Enemy{
         CircleShape shape = new CircleShape();
         shape.setRadius(7 / LibGDXGame.PPM);
 
+        //defining category bit of opossum
         fixtureDef.filter.categoryBits = LibGDXGame.ENEMY_BIT;
+        //adding mask bits - defining objects which opossum is able to collide with
         fixtureDef.filter.maskBits = LibGDXGame.FOX_BIT | LibGDXGame.DEFAULT_BIT | LibGDXGame.ENEMY_BIT;
 
         fixtureDef.shape = shape;
+
+        //setting user data so opossum object can be distinguished in WorldContactListener class during collision detection
         body.createFixture(fixtureDef).setUserData("opossum");
     }
 }
